@@ -1,0 +1,30 @@
+<%= form_for @order do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <h2>Pizza</h2>
+  <%= f.fields_for :pizzas do |pizza_form| %>
+  <div class="field">
+    <%= pizza_form.label :size %><br />
+    <%= pizza_form.select :size, ["Small", "Medium", "Large"], :prompt => "Select a size" %><br />
+    <% Topping.all.each do |topping| %>
+    <%= check_box_tag "pizzas[topping_ids][]",
+                              topping.id,
+                              @order.pizzas.first.topping_ids.include?(topping.id) %>
+    <%= topping.name %><br />
+  <% end %>
+  </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

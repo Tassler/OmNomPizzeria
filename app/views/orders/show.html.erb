@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Opened at:</b>
+  <%= @order.opened_at %>
+</p>
+
+<p>
+  <b>Closed at:</b>
+  <%= @order.closed_at %>
+</p>
+<ol>
+  <% for pizza in @order.pizzas %>
+  <li>Size: <%= pizza.size %></li>
+    <ul>
+      <% for topping in pizza.toppings %>
+      <li><%= topping.name %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</ol>
+
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

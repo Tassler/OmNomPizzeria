@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  opened_at: 2012-02-25 18:05:26
+  closed_at: 2012-02-25 18:05:26
+
+two:
+  opened_at: 2012-02-25 18:05:26
+  closed_at: 2012-02-25 18:05:26
